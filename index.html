@@ -16,12 +16,18 @@
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         setTimeout(function() {
-            var ads = document.querySelectorAll(".ad-banner, .popup, .cookie-consent, iframe, .adsbygoogle");
+            var ads = document.querySelectorAll(".ad-banner, .popup, .cookie-consent, .adsbygoogle");
             ads.forEach(el => el.remove());
 
             var sidebar = document.querySelector(".sidebar");
             if (sidebar) sidebar.style.display = "none";
-        }, 3000); // تأخير لحذف الإعلانات بعد تحميل الصفحة
+
+            // التأكد من أن iframe الرئيسي للبث يبقى كما هو
+            var streamIframe = document.getElementById("stream");
+            if (streamIframe) {
+                console.log("البث موجود، لم يتم حذفه.");
+            }
+        }, 3000); // تأخير حذف الإعلانات بعد تحميل الصفحة
     });
 </script>
 
